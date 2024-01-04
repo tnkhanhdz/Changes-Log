@@ -34,7 +34,7 @@ class ChangesLogServiceProvider extends ServiceProvider
 
         // Publish Model
         $this->publishes([
-            __DIR__ . '/Models/CustomChangesLog.php' => app_path('Models/ChangesLog.php'),
+            __DIR__ . '/Models/ChangesLogDraft' => app_path('Models/ChangesLog.php'),
         ], 'changeslog-config');
     }
 }

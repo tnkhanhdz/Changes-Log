@@ -1,0 +1,26 @@
+{
+    "name": "tnkhanh/changes-log",
+    "description": "Log models data changes into database",
+    "authors": [
+        {
+            "name": "tnkhanh"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "illuminate/support": "^9.0|^8.0|^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ChangesLog\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ChangesLog\\ChangesLogServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}

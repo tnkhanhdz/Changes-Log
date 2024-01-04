@@ -2,7 +2,6 @@
 
 namespace ChangesLog;
 
-use ChangesLog\Models\ChangesLog;
 use Illuminate\Support\ServiceProvider;
 
 class ChangesLogServiceProvider extends ServiceProvider
@@ -28,9 +27,14 @@ class ChangesLogServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
-        // Publish the config/breadcrumbs.php file
+        // Publish the config/changeslog.php file
         $this->publishes([
             __DIR__ . '/../config/changeslog.php' => config_path('changeslog.php'),
+        ], 'changeslog-config');
+
+        // Publish Model
+        $this->publishes([
+            __DIR__ . '/../Models/CustomChangesLog.php' => app_path('Models/ChangesLog.php'),
         ], 'changeslog-config');
     }
 }

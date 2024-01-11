@@ -42,13 +42,15 @@ class ChangesLog extends Model
 
     /**
      * @param $relation
+     * @param $model
      * @return LengthAwarePaginator
      */
-    public function getHistoryList($relation): LengthAwarePaginator
+    public function getHistoryList($relation, $model): LengthAwarePaginator
     {
-        return $this->with('changedBy')
-            ->whereHas($relation, function ($query) {
-                $query->changesLogFilter();
+        return $this->with('changedBy', $relation)
+            ->where('model', $model)
+            ->whereHas('lecturer', function ($query) {
+                $query->withTrashed()->changesLogFilter();
             })
             ->orderBy('time', 'DESC')
             ->paginate(config('changeslog.pagination_limit'));

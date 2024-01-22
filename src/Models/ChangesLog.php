@@ -49,7 +49,7 @@ class ChangesLog extends Model
     {
         return $this->with('changedBy', $relation)
             ->where('model', $model)
-            ->whereHas('lecturer', function ($query) {
+            ->whereHas($relation, function ($query) {
                 $query->withTrashed()->changesLogFilter();
             })
             ->orderBy('time', 'DESC')
